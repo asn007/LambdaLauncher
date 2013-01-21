@@ -60,7 +60,6 @@ public class Minecraft implements Comparable<Minecraft> {
 	}
 
 	private String getType() {
-		// TODO Auto-generated method stub
 		return type;
 	}
 	

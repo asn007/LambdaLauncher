@@ -51,14 +51,6 @@ public class EnCoreBasic {
 		log("initialized in " + (System.currentTimeMillis() - l) + "ms", this.getClass());
 	}
 	
-	public void setupUser(String user) {
-		
-	}
-	
-	public void setupNetwork() {
-		
-	}
-	
 	public void log(String text, Class<?> c) {
 		if(logWriter == null) setupLogger(new File(this.filemodule.getWorkingDirectory() + File.separator + LauncherConf.logFileName));
 		try {

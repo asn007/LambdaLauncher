@@ -14,10 +14,7 @@ import eu.q_b.asn007.lambda.Main;
 
 public class UnZipper {
 	
-	 private final static int BUFFER = 10241024;  
-	    /** 
-	     * @param args 
-	     */  
+	 private final static int BUFFER = 10241024;
 	    
 	    public File recursiveUnzip(File inFile, File outFolder)  
 	    {  
@@ -91,7 +88,6 @@ public class UnZipper {
 	      
 	    private void cleanUp(InputStream in) throws Exception
 	    {
-	    
 	         in.close();  
 	    }  
 	      
