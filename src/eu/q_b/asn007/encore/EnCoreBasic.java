@@ -185,7 +185,7 @@ public class EnCoreBasic {
 	}
 	
 public String filterString(String s) {
-	return clear(new String[]{"!", "_", ",", ".", "?"},s.replaceAll("[^\\d.]", ""));
+	return clear(new String[]{"!", "_", ",", ".", "?", ";"},s.replaceAll("[^\\d.]", ""));
 }
 
 public String clear(String[] symbols, String toclear) {

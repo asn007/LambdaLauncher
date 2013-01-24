@@ -42,6 +42,7 @@ public class Main {
 	private JCheckBox forceUpdate;
 
 	private JButton go;
+	private JButton settings;
 
 	private JComboBox comboBox;
 
@@ -67,7 +68,7 @@ public class Main {
 					_instance = new Main();
 					_instance.frame.setIconImage(Main.getFramework()
 							.getIntmodule().getImage("icon.png"));
-					_instance.frame.setTitle("λauncher version 0.4.1 public");
+					_instance.frame.setTitle("λauncher version 0.5 public");
 					_instance.frame.setVisible(true);
 					_instance.frame.setLocationRelativeTo(null);
 					framework.log(
@@ -84,6 +85,7 @@ public class Main {
 	/**
 	 * Create the application.
 	 */
+
 	public Main() {
 		initialize();
 	}
@@ -93,7 +95,7 @@ public class Main {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 360, 310);
+		frame.setBounds(100, 100, 360, 355);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		container = new JPanel();
 		container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
@@ -138,6 +140,22 @@ public class Main {
 		go.setPreferredSize(new Dimension(300, 25));
 		go.setMaximumSize(new Dimension(300, 25));
 		go.setMinimumSize(new Dimension(300, 25));
+
+		settings = new JButton(bundle.getString("lambda.settings"));
+		settings.setAlignmentX(Component.CENTER_ALIGNMENT);
+		settings.setAlignmentY(Component.CENTER_ALIGNMENT);
+
+		settings.setPreferredSize(new Dimension(300, 25));
+		settings.setMaximumSize(new Dimension(300, 25));
+		settings.setMinimumSize(new Dimension(300, 25));
+		settings.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new SettingsDialog().setVisible(true);
+
+			}
+		});
 
 		passField = new JPasswordField(
 				bundle.getString("lambda.passFieldDefault"));
@@ -191,8 +209,9 @@ public class Main {
 		loginBox.add(Box.createVerticalStrut(10));
 		loginBox.add(go);
 		loginBox.add(Box.createVerticalStrut(10));
+		loginBox.add(settings);
+		loginBox.add(Box.createVerticalStrut(10));
 		loginBox.add(progressBar);
-		// loginBox.add(Box.createVerticalGlue());
 		container.add(j);
 		container.add(Box.createVerticalGlue());
 		container.add(loginBox);
@@ -262,13 +281,7 @@ public class Main {
 													+ File.separator + "data"));
 						new GameUpdaterThread(session,
 								forceUpdate.isSelected(), (Minecraft) comboBox
-										.getSelectedItem()).start(); // Знаете,
-																		// что я
-																		// ненавижу
-																		// больше
-																		// всего?
-																		// Писать
-																		// аутентификацию.
+										.getSelectedItem()).start();
 					}
 				}.start();
 			}
@@ -321,6 +334,7 @@ public class Main {
 
 			}
 		});
+
 	}
 
 	public static EnCoreBasic getFramework() {
@@ -337,6 +351,10 @@ public class Main {
 
 	public void setSession(Session session) {
 		this.session = session;
+	}
+
+	public JComboBox getComboBox() {
+		return comboBox;
 	}
 
 }
