@@ -21,7 +21,7 @@ public class MinecraftLoader extends JFrame {
 			urls[0] = new File(Main.getFramework().getFileModule()
 					.getWorkingDirectory()
 					+ File.separator + "bin" + File.separator,
-					minecraft2.getVersion() + ".jar").toURI().toURL();
+					minecraft2.getMinecraftJarName()).toURI().toURL();
 			urls[1] = new File(Main.getFramework().getFileModule()
 					.getWorkingDirectory()
 					+ File.separator + "bin" + File.separator, "lwjgl.jar")

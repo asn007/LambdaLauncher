@@ -1,10 +1,10 @@
 package eu.q_b.asn007.lambda;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -16,34 +16,14 @@ import javax.swing.SpringLayout;
 
 public class SettingsDialog extends JDialog {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -897064563083686712L;
 	private JTextField memoryField;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SettingsDialog dialog = new SettingsDialog();
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the dialog.
 	 */
 	public SettingsDialog() {
-		setBounds(100, 100, 450, 115);
+		setBounds(100, 100, 450, 140);
 		setResizable(false);
 		setLocationRelativeTo(Main._instance.frame);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -52,8 +32,7 @@ public class SettingsDialog extends JDialog {
 		JPanel container = new JPanel();
 		container.setLayout(new SpringLayout());
 		getContentPane().add(container);
-		container.add(new JLabel(Main.bundle
-				.getString("lambda.settings.memory")));
+
 		memoryField = new JTextField(Main
 				.getFramework()
 				.getFileModule()
@@ -61,12 +40,11 @@ public class SettingsDialog extends JDialog {
 						Main.getFramework().getFileModule()
 								.getWorkingDirectory()
 								+ File.separator + "memory", "1024"));
-		container.add(memoryField);
+
 		JLabel j = new JLabel(Main.bundle.getString("lambda.settings.after"),
 				JLabel.CENTER);
 		j.setFont(j.getFont().deriveFont(10F));
-		container.add(j);
-		container.add(Box.createRigidArea(new Dimension(0, 0)));
+
 		JButton saveButton = new JButton(
 				Main.bundle.getString("lambda.settings.save"));
 		saveButton.setPreferredSize(new Dimension(200, 25));
@@ -77,9 +55,51 @@ public class SettingsDialog extends JDialog {
 		wipeButton.setPreferredSize(new Dimension(200, 25));
 		wipeButton.setMaximumSize(new Dimension(200, 25));
 
+		JButton forgetButton = new JButton(
+				Main.bundle.getString("lambda.settings.forget"));
+		forgetButton.setPreferredSize(new Dimension(400, 25));
+		forgetButton.setMaximumSize(new Dimension(400, 25));
+
+		JButton purgeButton = new JButton(
+				Main.bundle.getString("lambda.settings.purge"));
+		purgeButton.setPreferredSize(new Dimension(400, 25));
+		purgeButton.setMaximumSize(new Dimension(400, 25));
+		purgeButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JButton j = (JButton) e.getSource();
+				j.setText(Main.bundle.getString("lambda.settings.purging"));
+				try {
+					Main.getFramework()
+							.getFileModule()
+							.recursiveDelete(
+									Main.getFramework().getFileModule()
+											.getWorkingDirectory());
+					j.setText(Main.bundle
+							.getString("lambda.settings.purgingcompleted"));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					Main.getFramework().log(
+							Main.getFramework().stack2string(e1),
+							this.getClass());
+					j.setText(Main.bundle
+							.getString("lambda.settings.purgingerror"));
+				}
+
+			}
+		});
+
+		container.add(new JLabel(Main.bundle
+				.getString("lambda.settings.memory")));
+		container.add(memoryField);
+		container.add(j);
+		container.add(Box.createRigidArea(new Dimension(0, 0)));
 		container.add(saveButton);
 		container.add(wipeButton);
-		SpringUtilities.makeCompactGrid(container, 3, 2, 0, 10, 0, 5);
+		container.add(purgeButton);
+		container.add(forgetButton);
+		SpringUtilities.makeCompactGrid(container, 4, 2, 0, 10, 0, 5);
 
 		saveButton.addActionListener(new ActionListener() {
 
@@ -115,6 +135,14 @@ public class SettingsDialog extends JDialog {
 				j.setText(Main.bundle.getString("lambda.settings.wiped"));
 			}
 
+		});
+
+		purgeButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
 		});
 
 	}

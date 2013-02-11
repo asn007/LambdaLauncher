@@ -68,7 +68,7 @@ public class Main {
 					_instance = new Main();
 					_instance.frame.setIconImage(Main.getFramework()
 							.getIntmodule().getImage("icon.png"));
-					_instance.frame.setTitle("λauncher version 0.5 public");
+					_instance.frame.setTitle("λauncher version 0.7 public");
 					_instance.frame.setVisible(true);
 					_instance.frame.setLocationRelativeTo(null);
 					framework.log(
@@ -355,6 +355,14 @@ public class Main {
 
 	public JComboBox getComboBox() {
 		return comboBox;
+	}
+
+	public JCheckBox getForceUpdate() {
+		return forceUpdate;
+	}
+
+	public void setForceUpdate(JCheckBox forceUpdate) {
+		this.forceUpdate = forceUpdate;
 	}
 
 }

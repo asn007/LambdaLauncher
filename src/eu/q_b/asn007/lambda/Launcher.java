@@ -3,8 +3,6 @@ package eu.q_b.asn007.lambda;
 import java.applet.Applet;
 import java.applet.AppletStub;
 import java.awt.BorderLayout;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -12,8 +10,7 @@ import java.net.URLClassLoader;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Launcher extends Applet implements Runnable, AppletStub,
-		MouseListener {
+public class Launcher extends Applet implements AppletStub {
 
 	private static final long serialVersionUID = 1L;
 	private Applet mcApplet = null;
@@ -29,31 +26,7 @@ public class Launcher extends Applet implements Runnable, AppletStub,
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent paramMouseEvent) {/**/
-	}
-
-	@Override
-	public void mousePressed(MouseEvent paramMouseEvent) {/**/
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent paramMouseEvent) {/**/
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent paramMouseEvent) {/**/
-	}
-
-	@Override
-	public void mouseExited(MouseEvent paramMouseEvent) {/**/
-	}
-
-	@Override
-	public void appletResize(int paramInt1, int paramInt2) {/**/
-	}
-
-	@Override
-	public void run() {/**/
+	public void appletResize(int paramInt1, int paramInt2) {
 	}
 
 	@Override
@@ -127,7 +100,7 @@ public class Launcher extends Applet implements Runnable, AppletStub,
 			try {
 				if (getAppletContext() != null)
 					context = 1;
-			} catch (Exception e) {/**/
+			} catch (Exception e) {
 			}
 		}
 		if (context == -1)

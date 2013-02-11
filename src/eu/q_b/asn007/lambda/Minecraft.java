@@ -36,6 +36,7 @@ public class Minecraft implements Comparable<Minecraft> {
 	}
 
 	private void fillRelations() {
+		relations.add("own");
 		relations.add("release");
 		relations.add("snapshot");
 		relations.add("beta");
@@ -55,12 +56,19 @@ public class Minecraft implements Comparable<Minecraft> {
 			if(Integer.parseInt(Main.getFramework().filterString(this.version)) > Integer.parseInt(Main.getFramework().filterString(o.version))) return -10;
 			else return 10;
 		}
-		else return 10;
-		
+		else return 10;	
 	}
 
 	private String getType() {
 		return type;
+	}
+	
+	public String getMinecraftJarName() {
+		return this.getVersion() + ".jar";
+	}
+	
+	public String getJarURL() {
+		return "http://lambda.q-b.eu/" + this.getMinecrafJarPath();
 	}
 	
 }

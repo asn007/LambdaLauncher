@@ -24,16 +24,15 @@ public class GameUpdaterThread extends Thread {
 		this.session = session;
 		this.forceUpdate = b;
 		this.minecraft = minecraft;
-
+		if(!new File(Main.getFramework().getFileModule().getWorkingDirectory() + File.separator + "bin" + File.separator + minecraft.getMinecraftJarName()).exists() || forceUpdate)
 		map.put(new File(Main.getFramework().getFileModule()
 				.getWorkingDirectory()
 				+ File.separator
 				+ "bin"
 				+ File.separator
-				+ minecraft.getVersion() + ".jar"),
+				+ minecraft.getMinecraftJarName()),
 				Main.getFramework().toURL(
-						"http://lambda.q-b.eu/"
-								+ minecraft.getMinecrafJarPath()));
+						minecraft.getJarURL()));
 
 		if (!new File(Main.getFramework().getFileModule().getWorkingDirectory()
 				+ File.separator + "bin" + File.separator + "lwjgl.jar")

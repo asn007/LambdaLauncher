@@ -18,7 +18,7 @@ import eu.q_b.asn007.lambda.LauncherConf;
 
 public class EnCoreBasic {
 
-	private static final double encoreVersion = 0.72;
+	private static final double encoreVersion = 0.75;
 	private final static DateFormat df = new SimpleDateFormat ("dd.MM.yyyy  hh:mm:ss ");
 	private FileWriter logWriter;
 	private final static String sep = System.getProperty("line.separator");
@@ -194,6 +194,11 @@ public String clear(String[] symbols, String toclear) {
 	}
 	if(toclear.equals("")) return "1";
 	return toclear;
+}
+
+public boolean strcont(String name, String[] strings) {
+	for(String s: strings) { if(name.contains(s)) return true;}
+	return false;
 }
 	
 }
