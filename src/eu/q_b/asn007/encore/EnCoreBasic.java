@@ -18,7 +18,7 @@ import eu.q_b.asn007.lambda.LauncherConf;
 
 public class EnCoreBasic {
 
-	private static final double encoreVersion = 0.75;
+	private static final double encoreVersion = 0.76;
 	private final static DateFormat df = new SimpleDateFormat ("dd.MM.yyyy  hh:mm:ss ");
 	private FileWriter logWriter;
 	private final static String sep = System.getProperty("line.separator");

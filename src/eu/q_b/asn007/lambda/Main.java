@@ -68,7 +68,7 @@ public class Main {
 					_instance = new Main();
 					_instance.frame.setIconImage(Main.getFramework()
 							.getIntmodule().getImage("icon.png"));
-					_instance.frame.setTitle("λauncher version 0.7 public");
+					_instance.frame.setTitle("λauncher version 2.0 preview");
 					_instance.frame.setVisible(true);
 					_instance.frame.setLocationRelativeTo(null);
 					framework.log(
@@ -216,7 +216,7 @@ public class Main {
 		container.add(Box.createVerticalGlue());
 		container.add(loginBox);
 		frame.getContentPane().add(container, "North");
-		new MinecraftVersionParser(LauncherConf.xmlAPIURL + "?act=versions",
+		new MinecraftVersionParser(LauncherConf.xmlAPIURL + "?act=patches",
 				comboBox).start();
 		go.addActionListener(new ActionListener() {
 

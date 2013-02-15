@@ -71,7 +71,7 @@ public class EnCoreNetwork {
 			String result;
 			while ((result = localBufferedReader.readLine()) != null)
 				sb.append(result + "\n");
-			return sb.toString();
+			return sb.deleteCharAt(sb.length() - 1).toString();
 		} catch (Exception e) {
 			Main.getFramework()
 					.log("Error while running GET request! Returning empty string...",

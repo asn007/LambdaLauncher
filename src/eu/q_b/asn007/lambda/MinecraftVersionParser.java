@@ -97,8 +97,8 @@ public class MinecraftVersionParser extends Thread {
 	}
 
 	private Minecraft getMinecraft(Element mc) {
-		return new Minecraft(mc.getAttribute("name"), getTextValue(mc, "jar"),
-				mc.getAttribute("type"));
+		return new Minecraft(mc.getAttribute("name"),
+				getTextValue(mc, "patch"), mc.getAttribute("type"));
 	}
 
 	public JComboBox getBox() {

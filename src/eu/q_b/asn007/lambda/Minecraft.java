@@ -71,4 +71,8 @@ public class Minecraft implements Comparable<Minecraft> {
 		return "http://lambda.q-b.eu/" + this.getMinecrafJarPath();
 	}
 	
+	public String getMinecraftPatchName() {
+		return this.getVersion() + ".patch";
+	}
+	
 }
