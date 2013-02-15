@@ -68,7 +68,7 @@ public class Main {
 					_instance = new Main();
 					_instance.frame.setIconImage(Main.getFramework()
 							.getIntmodule().getImage("icon.png"));
-					_instance.frame.setTitle("λauncher version 2.0 preview");
+					_instance.frame.setTitle("λauncher version 2.0 release");
 					_instance.frame.setVisible(true);
 					_instance.frame.setLocationRelativeTo(null);
 					framework.log(

@@ -11,7 +11,7 @@ public class DefaultMinecraft extends Minecraft {
 	}
 	
 	public String toString() {
-		return "Your minecraft.jar";
+		return Main.bundle.getString("lambda.yourJar");
 	}
 	
 	// This should be the first one in the list :3
